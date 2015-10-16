@@ -3,33 +3,84 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  sum = 0
+  arr.each{|i| sum += i }
+  return sum 
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.empty?
+    sum = 0
+  elsif arr.count == 1
+    sum = arr[0]
+  else
+    newArray = arr.sort{|x,y| y<=>x}
+    sum = newArray[0] + newArray[1]
+  end
+  return sum
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  matches = false
+  arr.each{|x| arr.each{|y| matches = true if  x != y && x + y == n}}
+  return matches
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  string = "Hello, " + name.to_s
+  return string
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  if s =~ /\b\A[^aeiou]/i
+    return true
+  else
+    return false
+  end
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if s =~ /^(0?[01]*00|0)$/
+    return true
+  end
+  return false
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+   def initialize(isbn1, price1)
+     if isbn1.empty?
+        raise ArgumentError.new("Invalid Arguments")
+     elsif price1 <= 0
+        raise ArgumentError.new("Invalid Arguments")
+     else
+       @isbn = isbn1
+       @price = price1
+     end
+   end
+   
+   def price_as_string
+     floatPrice = sprintf("%0.02f",@price)
+     newPrice = "$"+ floatPrice.to_s
+     return newPrice
+   end
+   
+   def isbn
+     @isbn
+   end
+   
+   def price
+     @price
+   end
+   
+   def isbn=(value)
+     @isbn = value
+   end
+   
+   def price=(value)
+     @price = value
+   end
 end
